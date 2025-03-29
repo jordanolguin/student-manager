@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './StudentForm.module.css';
 
 const StudentForm = ({ initialValues, onSubmit, onCancel, isEditMode }) => {
@@ -21,7 +22,13 @@ const StudentForm = ({ initialValues, onSubmit, onCancel, isEditMode }) => {
 
     return (
         <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
+      <AnimatePresence>
+      <motion.div
+          className={styles.modal}
+          initial={{ opacity: 0, y: "-100%" }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: "-100%" }}
+        >
         <h2 className={styles.modalTitle}>
           {isEditMode ? 'Edit Student' : 'Add New Student'}
         </h2>
@@ -67,7 +74,8 @@ const StudentForm = ({ initialValues, onSubmit, onCancel, isEditMode }) => {
             </button>
           </div>
         </form>
-      </div>
+      </motion.div>
+      </AnimatePresence>
     </div>
     );
 };

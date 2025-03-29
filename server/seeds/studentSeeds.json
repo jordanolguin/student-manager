@@ -1,0 +1,52 @@
+[
+    {
+      "firstName": "Sofia",
+      "lastName": "Gomez",
+      "grade": 95
+    },
+    {
+      "firstName": "Ali",
+      "lastName": "Khan",
+      "grade": 88
+    },
+    {
+      "firstName": "Hiroshi",
+      "lastName": "Tanaka",
+      "grade": 76
+    },
+    {
+      "firstName": "Leila",
+      "lastName": "Haddad",
+      "grade": 84
+    },
+    {
+      "firstName": "Maria",
+      "lastName": "Ivanova",
+      "grade": 90
+    },
+    {
+      "firstName": "Diego",
+      "lastName": "Rodriguez",
+      "grade": 72
+    },
+    {
+      "firstName": "Ahmed",
+      "lastName": "Ali",
+      "grade": 81
+    },
+    {
+      "firstName": "Zhen",
+      "lastName": "Wang",
+      "grade": 94
+    },
+    {
+      "firstName": "Nour",
+      "lastName": "Abdelrahman",
+      "grade": 85
+    },
+    {
+      "firstName": "Lucas",
+      "lastName": "Ferreira",
+      "grade": 78
+    }
+  ]  

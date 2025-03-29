@@ -1,14 +1,29 @@
 import FloatingAddButton from './components/FloatingAddButton/FloatingAddButton';
 import StudentList from './components/StudentList/StudentList';
 import useFetchStudents from './hooks/useFetchStudents';
+import useDeleteStudent from './hooks/useDeleteStudent';
 import './App.css';
 
 function App() {
   const { students, loading, error, setStudents } = useFetchStudents();
+  const { removeStudent } = useDeleteStudent();
 
-  const handleDelete = (id) => {
-    const updateStudents = students.filter((student) => student._id !== id);
-    setStudents(updateStudents);
+  const handleDelete = async (id) => {
+    const deletedStudent = await removeStudent(id);
+    if (deletedStudent) {
+      setStudents((prevStudents) =>
+        prevStudents.map((student) =>
+          student._id === id
+            ? { ...student, isDeleted: true, deletedAt: deletedStudent.deletedAt }
+            : student
+        )
+      );
+      console.log(
+        `✅ Student ${deletedStudent.firstName} ${deletedStudent.lastName} was successfully deleted.`
+      );
+    } else {
+      console.error('Error deleting student:', deletedStudent);
+    }
   };
 
   const handleEdit = (student) => {

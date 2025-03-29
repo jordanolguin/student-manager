@@ -1,12 +1,28 @@
+import { useState } from 'react';
 import FloatingAddButton from './components/FloatingAddButton/FloatingAddButton';
 import StudentList from './components/StudentList/StudentList';
+import StudentForm from './components/StudentForm/StudentForm';
 import useFetchStudents from './hooks/useFetchStudents';
+import useCreateStudent from './hooks/useCreateStudent';
 import useDeleteStudent from './hooks/useDeleteStudent';
 import './App.css';
 
 function App() {
   const { students, loading, error, setStudents } = useFetchStudents();
+  const { addStudent } = useCreateStudent();
   const { removeStudent } = useDeleteStudent();
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const handleAddStudent = async (student) => {
+    const newStudent = await addStudent(student);
+    if (newStudent) {
+      setStudents((prevStudents) => [...prevStudents, newStudent]);
+      closeModal();
+    }
+  };
+
+  const openModal = () => setIsFormOpen(true);
+  const closeModal = () => setIsFormOpen(false);
 
   const handleDelete = async (id) => {
     const deletedStudent = await removeStudent(id);
@@ -46,7 +62,15 @@ function App() {
         onEdit={handleEdit}
         onDelete={handleDelete}
       />
-      <FloatingAddButton onAdd={() => console.log('Add new student')} />
+      <FloatingAddButton onAdd={openModal} />
+      {isFormOpen && (
+        <StudentForm
+          initialValues={{ firstName: '', lastName: '', grade: '' }}
+          onSubmit={handleAddStudent}
+          onCancel={closeModal}
+          isEditMode={false}
+        />
+      )}
     </div>
   );
 }

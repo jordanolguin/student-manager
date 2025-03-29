@@ -23,7 +23,9 @@ const createStudent = async (req, res) => {
 const deleteStudent = async (req, res) => {
     const { id } = req.params;
     try {
-        const student = await Student.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
+        const student = await Student.findByIdAndUpdate(id, 
+            { isDeleted: true, deletedAt: Date.now() }, 
+            { new: true });
         if (!student) {
             return res.status(404).json({ message: 'Student not found' });
         }

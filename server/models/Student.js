@@ -23,6 +23,9 @@ const studentSchema = new Schema(
             default: false,
             index: true,
         },
+        deletedAt: {
+            type: Date,
+        },
         createdAt: {
             type: Date,
             default: Date.now,
@@ -34,6 +37,8 @@ const studentSchema = new Schema(
     },
     { timestamps: true, }
 );
+
+studentSchema.index({ deletedAt: 1 }, { expireAfterSeconds: 30 * 24 * 60 * 60 }); 
 
 const Student = model('Student', studentSchema);
 

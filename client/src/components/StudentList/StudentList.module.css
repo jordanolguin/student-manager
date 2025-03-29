@@ -1,0 +1,15 @@
+.listContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .noData {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #777;
+    margin-top: 24px;
+  }
+  

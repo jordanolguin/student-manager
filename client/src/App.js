@@ -8,13 +8,46 @@ const dummyStudents = [
     firstName: 'Emma',
     lastName: 'Johnson',
     grade: 92,
+    createdAt: '2025-03-01T12:00:00Z',
+    isDeleted: false,
+    deletedAt: null,
   },
   {
     _id: '2',
     firstName: 'Liam',
     lastName: 'Garcia',
     grade: 85,
+    createdAt: '2025-03-02T12:00:00Z',
+    isDeleted: true,
+    deletedAt: '2025-03-10T10:00:00Z',
   },
+  {
+    _id: '3',
+    firstName: 'Sofia',
+    lastName: 'Gomez',
+    grade: 95,
+    createdAt: '2025-03-03T12:00:00Z',
+    isDeleted: false,
+    deletedAt: null,
+  },
+  {
+    _id: '4',
+    firstName: 'Ali',
+    lastName: 'Khan',
+    grade: 88,
+    createdAt: '2025-03-04T12:00:00Z',
+    isDeleted: true,
+    deletedAt: '2025-03-15T14:00:00Z',
+  },
+  {
+    _id: '5',
+    firstName: 'Hiroshi',
+    lastName: 'Tanaka',
+    grade: 76,
+    createdAt: '2025-03-05T12:00:00Z',
+    isDeleted: false,
+    deletedAt: null,
+  }
 ];
 
 function App() {

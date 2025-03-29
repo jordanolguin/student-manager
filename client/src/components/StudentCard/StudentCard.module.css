@@ -53,6 +53,25 @@
   color: #777;
 }
 
+.createdAt {
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.clockIcon {
+  color: #007bff;
+}
+
+.deleted {
+  font-size: 0.85rem;
+  color: #dc3545;
+  margin-top: 4px;
+}
+
 .actions {
   display: flex;
   gap: 8px;

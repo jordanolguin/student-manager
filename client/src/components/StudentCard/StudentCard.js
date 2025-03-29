@@ -1,5 +1,6 @@
 import styles from './StudentCard.module.css';
-import { FaEdit, FaTrash, FaUserGraduate } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaUserGraduate, FaClock } from 'react-icons/fa';
+import { formatDate } from '../../utils/formatDate';
 
 const StudentCard = ({ student, onEdit, onDelete }) => {
   return (
@@ -12,14 +13,27 @@ const StudentCard = ({ student, onEdit, onDelete }) => {
           {student.firstName} {student.lastName}
         </h3>
         <p className={styles.grade}>Grade: {student.grade}%</p>
+        <p className={styles.createdAt}>
+          <FaClock className={styles.clockIcon} /> Created At:{' '}
+          {formatDate(student.createdAt)}
+        </p>
+        {student.isDeleted && (
+          <p className={styles.deleted}>
+            <strong>❗️ Deleted:</strong> {formatDate(student.deletedAt)}
+          </p>
+        )}
       </div>
       <div className={styles.actions}>
-        <button className={styles.editBtn} onClick={() => onEdit(student)}>
-          <FaEdit className={styles.icon} /> Edit
-        </button>
-        <button className={styles.deleteBtn} onClick={() => onDelete(student._id)}>
-          <FaTrash className={styles.icon} /> Delete
-        </button>
+        {!student.isDeleted && (
+          <>
+            <button className={styles.editBtn} onClick={() => onEdit(student)}>
+              <FaEdit className={styles.icon} /> Edit
+            </button>
+            <button className={styles.deleteBtn} onClick={() => onDelete(student._id)}>
+              <FaTrash className={styles.icon} /> Delete
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

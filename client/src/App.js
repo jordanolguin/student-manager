@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FloatingAddButton from './components/FloatingAddButton/FloatingAddButton';
 import StudentList from './components/StudentList/StudentList';
 import './App.css';
 
@@ -63,13 +64,14 @@ function App() {
   };
 
   return (
-    <div className='appContainer'>
+    <div>
       <h1 className='appTitle'>Student Manager</h1>
       <StudentList 
         students={students}
         onEdit={handleEdit}
         onDelete={handleDelete}
       />
+      <FloatingAddButton onAdd={() => console.log('Add new student')} />
     </div>
   );
 }

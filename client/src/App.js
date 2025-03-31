@@ -16,7 +16,7 @@ function App() {
   const handleAddStudent = async (student) => {
     const newStudent = await addStudent(student);
     if (newStudent) {
-      setStudents((prevStudents) => [...prevStudents, newStudent]);
+      setStudents((prevStudents) => [newStudent, ...prevStudents]);
       closeModal();
     }
   };
